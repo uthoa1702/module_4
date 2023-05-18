@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 
 public class ConvertService implements IConvertService {
     @Override
-    public int usdToVnd(int usd, int vnd) {
+    public long usdToVnd(long usd, long vnd) {
         return usd*vnd;
     }
 }

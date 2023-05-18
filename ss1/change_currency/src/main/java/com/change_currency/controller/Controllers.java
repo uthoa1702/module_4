@@ -19,9 +19,9 @@ public class Controllers {
     }
 
     @PostMapping("/")
-    public String convert(Model model, @RequestParam(value = "usd")int usd, @RequestParam(value = "vnd")int vnd){
+    public String convert(Model model, @RequestParam(value = "usd")long usd, @RequestParam(value = "vnd")long vnd){
 
-        int result =  iConvertService.usdToVnd(usd,vnd);
+        long result =  iConvertService.usdToVnd(usd,vnd);
 
             model.addAttribute("vnd",vnd);
             model.addAttribute("usd",usd);
