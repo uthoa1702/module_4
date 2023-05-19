@@ -33,9 +33,9 @@ public class CalculatorController {
                 model.addAttribute("result", result);
                 break;
             case "div":
-                result = calculatorService.div(num1,num2);
+                String resultStr = calculatorService.div(num1,num2);
                 model.addAttribute("action", "Division");
-                model.addAttribute("result", result);
+                model.addAttribute("result", resultStr);
                 break;
             case "mul":
                 result = calculatorService.mul(num1,num2);

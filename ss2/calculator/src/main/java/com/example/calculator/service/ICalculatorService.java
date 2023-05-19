@@ -5,7 +5,7 @@ public interface ICalculatorService {
 
     int sub(Integer num1, Integer num2);
 
-    int div(Integer num1, Integer num2);
+    String div(Integer num1, Integer num2);
 
     int mul(Integer num1, Integer num2);
 }

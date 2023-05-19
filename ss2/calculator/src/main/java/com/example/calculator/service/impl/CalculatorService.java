@@ -17,8 +17,14 @@ public class CalculatorService implements ICalculatorService {
     }
 
     @Override
-    public int div(Integer num1, Integer num2) {
-        return num1 / num2;
+    public String div(Integer num1, Integer num2) {
+        String result;
+        try {
+              result = String.valueOf(num1/num2);
+        }catch (ArithmeticException e){
+             return "Can't divide for zero";
+        }
+        return result;
     }
 
     @Override
