@@ -6,7 +6,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public class EmailContainerRepository implements IEmailContainerRepository {
-    static EmailContainer emailContainer = new EmailContainer("English",5,true,"James");
+    private static EmailContainer emailContainer = new EmailContainer("English",5,true,"James");
     @Override
     public void save(EmailContainer emailContainer1) {
         emailContainer.setLanguage(emailContainer1.getLanguage());

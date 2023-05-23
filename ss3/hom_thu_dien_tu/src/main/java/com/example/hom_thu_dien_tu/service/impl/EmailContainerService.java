@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class EmailContainerService implements IEmailContainerService {
     @Autowired
-    IEmailContainerRepository emailContainerRepository;
+    private IEmailContainerRepository emailContainerRepository;
 
     @Override
     public void save(EmailContainer emailContainer1) {

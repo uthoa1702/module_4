@@ -15,7 +15,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 @Controller
 public class EmailContainerController {
     @Autowired
-    IEmailContainerService emailContainerService;
+    private IEmailContainerService emailContainerService;
 
     @GetMapping("/")
     public  String home (){
@@ -35,9 +35,9 @@ public class EmailContainerController {
 
     @PostMapping("update")
     public String updateEmailContainer(@ModelAttribute("emailContainer") EmailContainer emailContainer, BindingResult bindingResult, RedirectAttributes redirectAttributes) {
-        EmailContainer emailContainer1 = new EmailContainer();
-        BeanUtils.copyProperties(emailContainer, emailContainer1);
-        emailContainerService.save(emailContainer1);
+//        EmailContainer emailContainer1 = new EmailContainer();
+//        BeanUtils.copyProperties(emailContainer, emailContainer1);
+        emailContainerService.save(emailContainer);
         return "index";
     }
 }
