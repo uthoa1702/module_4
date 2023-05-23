@@ -15,4 +15,6 @@ public interface IProductRepository {
     boolean delete(Integer id);
 
     Product findById(Integer id);
+
+    List<Product> search(String search);
 }
