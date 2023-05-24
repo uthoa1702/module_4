@@ -11,6 +11,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 
 @Controller
@@ -42,9 +43,9 @@ public class ProductController {
         model.addAttribute("product",product);
         return "detail";
     }
-    @GetMapping("/delete/{id}")
-    public String delete(@ModelAttribute("product") Product product,Model model,@PathVariable("id") Integer id){
-        boolean check = productService.delete(id);
+    @GetMapping("/delete")
+    public String delete(Model model,@RequestParam Integer deleteId){
+        boolean check = productService.delete(deleteId);
         List<Product> productList = new ArrayList<>();
         productList = productService.getList();
         model.addAttribute("products" , productList);
@@ -56,7 +57,7 @@ public class ProductController {
         Product product = new Product();
         List<Product> productList = productService.getList();
         for (int i = 0; i < productList.size(); i++) {
-            if (id== productList.get(i).getId()){
+            if (Objects.equals(id, productList.get(i).getId())){
                  product = productList.get(i);
                 break;
             }

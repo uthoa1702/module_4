@@ -1,92 +1,71 @@
 package com.example.assignment.repository.impl;
 
 import com.example.assignment.model.Product;
+import com.example.assignment.repository.BaseRepository;
 import com.example.assignment.repository.IProductRepository;
 import org.springframework.stereotype.Repository;
 
+import javax.persistence.EntityTransaction;
+import javax.swing.text.html.parser.Entity;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 @Repository
 public class ProductRepository implements IProductRepository {
-    static List<Product> productList = new ArrayList<>();
-    static {
-        productList.add(new Product(1,"Trà sữa Olong", 50.0,"ngon lắm đó mọi người ơi, best seller của quán em đọ","GongChaTea"));
-        productList.add(new Product(2,"Trà sữa Jasmine Tea", 40.0,"ngon lắm đó mọi người ơi, best seller của quán em đọ","GongChaTea"));
-    }
+//    static List<Product> productList = new ArrayList<>();
+//
+//    static {
+//        productList.add(new Product(1, "Trà sữa Olong", 50.0, "ngon lắm đó mọi người ơi, best seller của quán em đọ", "GongChaTea"));
+//        productList.add(new Product(2, "Trà sữa Jasmine Tea", 40.0, "ngon lắm đó mọi người ơi, best seller của quán em đọ", "GongChaTea"));
+//    }
 
     @Override
     public List<Product> getList() {
-        return productList;
+        List<Product> productLists = BaseRepository.entityManager.createQuery("select p from Product p", Product.class).getResultList();
+
+        return productLists;
     }
 
     @Override
     public boolean save(Product product) {
         boolean check = true;
-        for (int i = 0; i < productList.size(); i++) {
-            if (product.getId()==productList.get(i).getId()){
-                check = false;
-                break;
-            }
-        }
-        if (check){
-            productList.add(product);
-        }
+        EntityTransaction transaction = BaseRepository.entityManager.getTransaction();
+        transaction.begin();
+        BaseRepository.entityManager.persist(product);
+        transaction.commit();
         return check;
     }
 
     @Override
     public boolean update(Product product) {
         boolean check = true;
-        for (int i = 0; i < productList.size(); i++) {
-            if (product.getId()==productList.get(i).getId()){
-                productList.set(i,product);
-                break;
-            }else {
-                check = false;
-            }
-        }
+        EntityTransaction transaction = BaseRepository.entityManager.getTransaction();
+        transaction.begin();
+        BaseRepository.entityManager.merge(product);
+        transaction.commit();
         return check;
     }
 
     @Override
     public boolean delete(Integer id) {
         boolean check = true;
-        for (int i = 0; i < productList.size(); i++) {
-            if (Objects.equals(id, productList.get(i).getId())){
-                productList.remove(productList.get(i));
-                check = true;
-                break;
-            }
-            else {
-                check=false;
-            }
-        }
+        Product product = findById(id);
+        EntityTransaction transaction = BaseRepository.entityManager.getTransaction();
+        transaction.begin();
+        BaseRepository.entityManager.remove(product);
         return check;
     }
 
     @Override
     public Product findById(Integer id) {
-        Product product = new Product();
-        for (int i = 0; i < productList.size(); i++) {
-            if (Objects.equals(id, productList.get(i).getId())){
-                product = productList.get(i);
-            }
-        }
+        Product product = BaseRepository.entityManager.find(Product.class,id);
         return product;
     }
 
     @Override
     public List<Product> search(String search) {
-List<Product>products = new ArrayList<>();
-        for (int i = 0; i < productList.size(); i++) {
-            if (Objects.equals(search, productList.get(i).getName())){
-                products.add(productList.get(i));
-            }
-        }
-        
-        
-        return products;
+        List<Product> productLists = BaseRepository.entityManager.createQuery("select p from Product p where p.name like : searchs ", Product.class).setParameter("searchs", '%' + search + '%').getResultList();
+        return productLists;
     }
 }

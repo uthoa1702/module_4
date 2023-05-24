@@ -1,12 +1,25 @@
 package com.example.assignment.model;
 
-public class Product {
-// id, tên sản phẩm, giá sản phẩm, mô tả của sản phẩm, nhà sản xuất.
+import groovyjarjarantlr4.v4.runtime.misc.NotNull;
+import org.hibernate.annotations.Check;
 
+import javax.persistence.*;
+
+@Entity
+@Check(constraints = "price>0")
+public class Product {
+    // id, tên sản phẩm, giá sản phẩm, mô tả của sản phẩm, nhà sản xuất.
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+    @Column(name = "name", columnDefinition = "TEXT", nullable = false)
     private String name;
+
+    @NotNull
+    @Column(name = "price")
     private Double price;
-    private String description;
+    @Column(name = "description",columnDefinition = "TEXT" ) private String description;
+    @NotNull
     private String producer;
 
     public Product() {
