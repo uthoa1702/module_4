@@ -54,6 +54,7 @@ public class ProductRepository implements IProductRepository {
         EntityTransaction transaction = BaseRepository.entityManager.getTransaction();
         transaction.begin();
         BaseRepository.entityManager.remove(product);
+        transaction.commit();
         return check;
     }
 
