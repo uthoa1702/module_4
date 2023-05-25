@@ -35,6 +35,11 @@ public class BlogController {
         model.addAttribute("blog",blogService.findById(id));
         return "edit";
     }
+    @GetMapping("/detail/{id}")
+    public String detail(Model model, @PathVariable ("id") Integer id){
+        model.addAttribute("blog",blogService.findById(id));
+        return "detail";
+    }
 
     @GetMapping("/delete")
     public String delete(@RequestParam ("deleteId") Integer id){
@@ -42,11 +47,7 @@ public class BlogController {
         return "redirect:/";
     }
 
-    @GetMapping("/detail/{id}")
-    public String detail(@PathVariable ("id") Integer id, Model model){
-        model.addAttribute("blog",blogService.findById(id));
-        return "detail";
-    }
+
 
     @PostMapping("/create")
     public String createBlog(@ModelAttribute("blog") Blog blog, RedirectAttributes redirectAttributes, Model model) {

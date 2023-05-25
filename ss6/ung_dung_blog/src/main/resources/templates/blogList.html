@@ -41,9 +41,9 @@
               th:attr="onclick=|inforDelete(${blog.id},'${blog.title}')|">
       </button>
     </td>
-    <td><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal1"
-                th:attr="onclick=|detail(${blog.id},'${blog.title}','${blog.author}','${blog.content}','${blog.createTime}','${blog.updateTime}')|"
-    >Detail</button></td>
+    <td><a th:href="@{/detail/{id}(id = ${blog.id})}" ><button type="button" class="btn btn-primary"
+
+    >Detail</button></a></td>
   </tr>
 </table>
 <!-- Modal -->
@@ -70,36 +70,36 @@
 
 
 
-<!-- Modal -->
-<div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <b><h1 class="modal-title fs-5" id="exampleModalLabel1" ><span id="title"></span></h1></b>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-<!--        <h3>Title: </h3>-->
-        <span hidden id="id"></span>
-        <br>
-        <h6>Author: </h6>
-        <span id="author"></span>
-        <br>
-        <h6>Create time</h6>
-        <span id="createTime"></span>
-        <br>
-        <h6>Update time</h6>
-        <span id="updateTime"></span>
-        <br>
-        <hr>
-        <span id="content"></span>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-      </div>
-    </div>
-  </div>
-</div>
+<!--&lt;!&ndash; Modal &ndash;&gt;-->
+<!--<div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">-->
+<!--  <div class="modal-dialog">-->
+<!--    <div class="modal-content">-->
+<!--      <div class="modal-header">-->
+<!--        <b><h1 class="modal-title fs-5" id="exampleModalLabel1" ><span id="title"></span></h1></b>-->
+<!--        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>-->
+<!--      </div>-->
+<!--      <div class="modal-body">-->
+<!--&lt;!&ndash;        <h3>Title: </h3>&ndash;&gt;-->
+<!--        <span hidden id="id"></span>-->
+<!--        <br>-->
+<!--        <h6>Author: </h6>-->
+<!--        <span id="author"></span>-->
+<!--        <br>-->
+<!--        <h6>Create time</h6>-->
+<!--        <span id="createTime"></span>-->
+<!--        <br>-->
+<!--        <h6>Update time</h6>-->
+<!--        <span id="updateTime"></span>-->
+<!--        <br>-->
+<!--        <hr>-->
+<!--        <span id="content"></span>-->
+<!--      </div>-->
+<!--      <div class="modal-footer">-->
+<!--        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</div>-->
 
 
 
@@ -112,13 +112,13 @@
     document.getElementById("deleteName").innerText=name;
   }
 </script>
-<script>
-  function detail(id,title,author,content,createTime,updateTime){
-    document.getElementById("id").innerText=id;
-    document.getElementById("title").innerText=title;
-    document.getElementById("author").innerText=author;
-    document.getElementById("content").innerText=content;
-    document.getElementById("createTime").innerText=createTime;
-    document.getElementById("updateTime").innerText=updateTime;
-  }
-</script>
+<!--<script>-->
+<!--  function detail(id,title,author,content,createTime,updateTime){-->
+<!--    document.getElementById("id").innerText=id;-->
+<!--    document.getElementById("title").innerText=title;-->
+<!--    document.getElementById("author").innerText=author;-->
+<!--    document.getElementById("content").innerText=content;-->
+<!--    document.getElementById("createTime").innerText=createTime;-->
+<!--    document.getElementById("updateTime").innerText=updateTime;-->
+<!--  }-->
+<!--</script>-->
