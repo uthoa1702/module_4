@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th = "http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>List of Blogs</title>
@@ -8,19 +8,115 @@
 </head>
 <body>
 <h1>Blog Management</h1>
-<table class="table table-success table-striped">
+<nav class="navbar bg-dark" data-bs-theme="dark">
+  <div class="container-fluid">
+    <a href="/create"><button class="btn btn-success">Add new blog</button></a>
+<!--    <form action="/search" method="post" class="d-flex" role="search">-->
+<!--      <input th:value="${search}" name="search" class="form-control me-2"  placeholder="Search" aria-label="Search">-->
+<!--      <button class="btn btn-outline-success" type="submit">Search</button>-->
+<!--    </form>-->
+  </div>
+</nav>
+<table class="table table-success table-striped" >
   <tr>
     <th>No</th>
+    <th>ID</th>
     <th>Title</th>
     <th>Author</th>
     <th>Create Time</th>
     <th>Update Time</th>
     <th colspan="3">Actions</th>
+    <th></th>
   </tr>
-
-  <tr>
-    <td></td>
+  <tr th:each="blog,loop : ${blogList}">
+    <td th:text="${loop.count}"></td>
+    <td th:text="${blog.id}"></td>
+    <td th:text="${blog.title}"></td>
+    <td th:text="${blog.author}"></td>
+    <td th:text="${blog.createTime}"></td>
+    <td th:text="${blog.updateTime}"></td>
+    <td><a th:href="@{/edit/{id}(id=${blog.id})}"><button class="btn btn-warning">Edit</button></a></td>
+    <td >
+      <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal" th:text="Delete"
+              th:attr="onclick=|inforDelete(${blog.id},'${blog.title}')|">
+      </button>
+    </td>
+    <td><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal1"
+                th:attr="onclick=|detail(${blog.id},'${blog.title}','${blog.author}','${blog.content}','${blog.createTime}','${blog.updateTime}')|"
+    >Detail</button></td>
   </tr>
 </table>
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Confirmation</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <form action="/delete" method="get">
+        <div class="modal-body">
+          <input type="text" id="deleteId" name="deleteId" hidden>Are you sure to delete
+          <span style="color: red" id="deleteName"></span>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-danger">Delete</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <b><h1 class="modal-title fs-5" id="exampleModalLabel1" ><span id="title"></span></h1></b>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+<!--        <h3>Title: </h3>-->
+        <span hidden id="id"></span>
+        <br>
+        <h6>Author: </h6>
+        <span id="author"></span>
+        <br>
+        <h6>Create time</h6>
+        <span id="createTime"></span>
+        <br>
+        <h6>Update time</h6>
+        <span id="updateTime"></span>
+        <br>
+        <hr>
+        <span id="content"></span>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
 </body>
 </html>
+<script>
+  function inforDelete(id,name){
+    document.getElementById("deleteId").value=id;
+    document.getElementById("deleteName").innerText=name;
+  }
+  function detail(id,title,author,content,createTime,updateTime){
+    document.getElementById("id").innerText=id;
+    document.getElementById("title").innerText=title;
+    document.getElementById("author").innerText=author;
+    document.getElementById("content").innerText=content;
+    document.getElementById("createTime").innerText=createTime;
+    document.getElementById("updateTime").innerText=updateTime;
+  }
+</script>

@@ -3,12 +3,14 @@ package com.example.ung_dung_blog.model;
 import com.sun.istack.NotNull;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 
 import javax.persistence.*;
 import java.util.Date;
 
 @Entity
+@EntityListeners(AuditingEntityListener.class)
 public class Blog {
     @Id
 @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,15 +22,22 @@ public class Blog {
     private String author;
     @Column(name = "content", columnDefinition = "TEXT", nullable = false)
     private String content;
-    @Column(name = "createTime", nullable = false,updatable = false)
+    @Column(name = "createTime", nullable = false,updatable = false, columnDefinition = "TIMESTAMP DEFAULT now()")
     @CreationTimestamp
     private Date createTime;
 
-    @Column(name = "updateTime", nullable = false,updatable = true)
+    @Column(name = "updateTime", nullable = false, columnDefinition = "TIMESTAMP DEFAULT now()")
     @UpdateTimestamp
     private Date updateTime;
 
     public Blog() {
+    }
+
+    public Blog(Integer id, String title, String author, String content) {
+        this.id = id;
+        this.title = title;
+        this.author = author;
+        this.content = content;
     }
 
     public Blog(Integer id, String title, String author, String content, Date createTime, Date updateTime) {
