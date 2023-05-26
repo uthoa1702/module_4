@@ -1,16 +1,19 @@
 package com.example.ung_dung_blog.controller;
 
 import com.example.ung_dung_blog.model.Blog;
+import com.example.ung_dung_blog.model.Category;
 import com.example.ung_dung_blog.service.IBlogService;
+import com.example.ung_dung_blog.service.ICategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import java.util.ArrayList;
 import java.util.List;
+
 
 @Controller
 public class BlogController {
@@ -18,21 +21,31 @@ public class BlogController {
 
     @Autowired
     private IBlogService blogService;
+    @Autowired
+    private ICategoryService categoryService;
+
+
+
+
+
 
     @GetMapping("/")
-    public ModelAndView getList() {
-
-        return new ModelAndView("blogList", "blogList", blogService.findAll());
+    public ModelAndView getList(@RequestParam(value = "page", defaultValue = "0")Integer page) {
+        Page<Blog> blog = blogService.getAllPage(page);
+        return new ModelAndView("blogList", "blogList", blogService.getAllPage(page));
     }
 
     @GetMapping("/create")
     public String create(Model model, @ModelAttribute ("blog") Blog blog){
-//        model.addAttribute("blog",new Blog());
+        List<Category> categoryList = categoryService.findAll();
+        model.addAttribute("categoryList",categoryList);
         return "create";
     }
     @GetMapping("/edit/{id}")
     public String create(Model model, @PathVariable ("id") Integer id){
         model.addAttribute("blog",blogService.findById(id));
+        List<Category> categoryList = categoryService.findAll();
+        model.addAttribute("categoryList",categoryList);
         return "edit";
     }
     @GetMapping("/detail/{id}")

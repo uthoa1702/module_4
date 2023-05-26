@@ -11,6 +11,7 @@
 <nav class="navbar bg-dark" data-bs-theme="dark">
   <div class="container-fluid">
     <a href="/create"><button class="btn btn-success">Add new blog</button></a>
+    <a href="/category"><button class="btn btn-success">Manage category </button></a>
 <!--    <form action="/search" method="post" class="d-flex" role="search">-->
 <!--      <input th:value="${search}" name="search" class="form-control me-2"  placeholder="Search" aria-label="Search">-->
 <!--      <button class="btn btn-outline-success" type="submit">Search</button>-->
@@ -23,6 +24,7 @@
     <th>ID</th>
     <th>Title</th>
     <th>Author</th>
+    <th>Category</th>
     <th>Create Time</th>
     <th>Update Time</th>
     <th colspan="3">Actions</th>
@@ -33,6 +35,7 @@
     <td th:text="${blog.id}"></td>
     <td th:text="${blog.title}"></td>
     <td th:text="${blog.author}"></td>
+    <td th:text="${blog.category.name}"></td>
     <td th:text="${blog.createTime}"></td>
     <td th:text="${blog.updateTime}"></td>
     <td><a th:href="@{/edit/{id}(id=${blog.id})}"><button class="btn btn-warning">Edit</button></a></td>
@@ -46,6 +49,15 @@
     >Detail</button></a></td>
   </tr>
 </table>
+
+<div>
+  <a th:href="@{/(page=${blogList.number - 1})}" th:if="${blogList.hasPrevious()}">Previous</a>
+  <a th:href="@{/(page=${blogList.number + 1})}" th:if="${blogList.hasNext()}">Next</a>
+
+</div>
+
+
+
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">

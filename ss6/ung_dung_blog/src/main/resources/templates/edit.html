@@ -23,6 +23,16 @@
       <label  class="form-label">Author</label>
       <input th:field="*{author}" type="text" class="form-control"  aria-describedby="emailHelp">
     </div>
+    <div class="mb-3">
+      <label class="form-label">Category</label>
+      <br>
+      <select th:field="*{category}">
+        <option th:each="cate : ${categoryList}"
+                th:text="${cate.name}"
+                th:value="${cate.id}"
+        ></option>
+      </select>
+    </div>
 
     <div class="mb-3">
       <label  class="form-label">Content</label>
