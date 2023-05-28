@@ -6,6 +6,7 @@ import com.example.ung_dung_blog.service.IBlogService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -44,5 +45,10 @@ public class BlogService implements IBlogService {
     @Override
     public Page<Blog> getAllPage(Integer page) {
          return blogRepository.findAll(PageRequest.of(page, 1));
+    }
+
+    @Override
+    public Page<Blog> findPage(Pageable pageable) {
+        return blogRepository.findAll(pageable);
     }
 }
