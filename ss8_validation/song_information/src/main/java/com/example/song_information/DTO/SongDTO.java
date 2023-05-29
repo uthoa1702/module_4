@@ -1,5 +1,8 @@
 package com.example.song_information.DTO;
 
+import org.springframework.validation.Errors;
+import org.springframework.validation.Validator;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
@@ -30,7 +33,7 @@ import javax.validation.constraints.Size;
 //Ngoại trừ dấu phẩy “,” , các ký tự đặc biệt còn lại không được phép lưu vào DB
 
 
-public class SongDTO {
+public class SongDTO implements Validator {
     private Integer id;
 
 
@@ -98,5 +101,15 @@ public class SongDTO {
 
     public void setCategory(String category) {
         this.category = category;
+    }
+
+    @Override
+    public boolean supports(Class<?> clazz) {
+        return false;
+    }
+
+    @Override
+    public void validate(Object target, Errors errors) {
+
     }
 }
