@@ -34,7 +34,7 @@ public class Blog {
     private Date updateTime;
 
     @ManyToOne
-    @JoinColumn(name = "category")
+    @JoinColumn
     private Category category;
 
     public Boolean isStatus() {

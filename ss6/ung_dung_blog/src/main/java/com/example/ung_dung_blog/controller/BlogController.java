@@ -28,20 +28,7 @@ public class BlogController {
     private ICategoryService categoryService;
 
 
-//    @GetMapping("/")
-//    public String getBlogList(Model model){
-//        List<Blog> blogList = blogService.findAll();
-//        model.addAttribute("blogList", blogList);
-//        return "blogList";
-//    }
 
-
-
-//    @GetMapping("/")
-//    public ModelAndView getList(@RequestParam(value = "page", defaultValue = "0")Integer page) {
-//        Page<Blog> blog = blogService.getAllPage(page);
-//        return new ModelAndView("blogList", "blogList", blogService.getAllPage(page));
-//    }
 
     @GetMapping("/create")
     public String create(Model model, @ModelAttribute ("blog") Blog blog){
