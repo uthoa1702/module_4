@@ -15,4 +15,6 @@ public interface IRentalBookService {
     BookRenting findById(Integer id);
 
     void returnBook(Integer id);
+
+    int checkCode(List<BookRenting> bookRentings);
 }

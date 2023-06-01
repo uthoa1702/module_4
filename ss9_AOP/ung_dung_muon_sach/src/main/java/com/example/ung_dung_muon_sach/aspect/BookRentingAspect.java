@@ -16,7 +16,7 @@ import java.io.IOException;
 public class BookRentingAspect {
     private static int count = 0;
 
-    @After(value = "execution(* com.example.ung_dung_muon_sach.controller.RentalBookController.*(..))")
+    @After(value = "execution(* com.example.ung_dung_muon_sach.controller.RentalBookController.returnBook(..))")
     public void logReturn(JoinPoint joinPoint) {
         File file = new File("D:\\module_4\\ss9_AOP\\ung_dung_muon_sach\\src\\main\\resources\\log\\log.csv");
         FileWriter fileWriter = null;
@@ -33,8 +33,8 @@ public class BookRentingAspect {
         }
     }
 
-    @AfterReturning(value = "execution(* com.example.ung_dung_muon_sach.controller.RentalBookController.returnBook(..))", returning = "result")
-    public void logBorrow(JoinPoint joinPoint, Object result) {
+    @AfterReturning(value = "execution(* com.example.ung_dung_muon_sach.controller.RentalBookController.rent(..))", returning = "result")
+    public void logRent(JoinPoint joinPoint, Object result) {
         File file = new File("D:\\module_4\\ss9_AOP\\ung_dung_muon_sach\\src\\main\\resources\\log\\log.csv");
         FileWriter fileWriter = null;
         BufferedWriter bufferedWriter = null;

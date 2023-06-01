@@ -39,17 +39,7 @@ public class RentalBookController {
         iBookService.save(book1);
         int rentCode;
         List<BookRenting> bookRentings = iRentalBookService.getList();
-        boolean check;
-        do {
-            check = true;
-            rentCode = getRandomNumber(10000, 99999);
-
-            for (int i = 0; i < bookRentings.size(); i++) {
-                if (bookRentings.get(i).getRentCode() == rentCode) {
-                    check = false;
-                }
-            }
-        } while (!check);
+         rentCode = iRentalBookService.checkCode(bookRentings);
 
 
         BookRenting bookRenting = new BookRenting(rentCode, book1);
@@ -85,7 +75,5 @@ public class RentalBookController {
     }
 
 
-    public int getRandomNumber(int min, int max) {
-        return (int) ((Math.random() * (max - min)) + min);
-    }
+
 }

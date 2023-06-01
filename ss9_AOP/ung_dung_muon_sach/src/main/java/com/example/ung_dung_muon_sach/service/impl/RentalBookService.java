@@ -34,4 +34,24 @@ public class RentalBookService implements IRentalBookService {
     public void returnBook(Integer id) {
         iRentalBookRepository.deleteById(id);
     }
+
+    @Override
+    public int checkCode(List<BookRenting> bookRentings) {
+        boolean check;
+        int rentCode;
+        do {
+            check = true;
+            rentCode = getRandomNumber(10000, 99999);
+
+            for (int i = 0; i < bookRentings.size(); i++) {
+                if (bookRentings.get(i).getRentCode() == rentCode) {
+                    check = false;
+                }
+            }
+        } while (!check);
+        return rentCode;
+    }
+    public int getRandomNumber(int min, int max) {
+        return (int) ((Math.random() * (max - min)) + min);
+    }
 }
