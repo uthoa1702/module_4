@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+</head>
+<body>
+<h1>SHOPPING CART</h1>
+<a th:href="@{/}"><button class="btn-primary">Trang chủ</button></a>
+<table class="table table-dark table-striped">
+  <tr>
+    <th>Image</th>
+    <th>code</th>
+    <th>name</th>
+    <th>Price</th>
+    <th>Quantity</th>
+  </tr>
+  <tr th:each="flower, loop: ${cart.entrySet()}">
+    <td><img th:src="${flower.getKey().image}" alt=""></td>
+    <td th:text="${flower.getKey().code}"></td>
+    <td th:text="${flower.getKey().name}"></td>
+    <td th:text="${flower.getKey().price}"></td>
+    <td>
+      <a th:href="@{/remove/{id}(id = ${flower.getKey().id})}" th:text="'-'"></a>
+      <span th:text="${flower.getValue()}"></span>
+      <a th:href="@{/add/{id}(id = ${flower.getKey().id})}" th:text="'+'"></a>
+    </td>
+  </tr>
+</table>
+<h1 style="color:black">TOTAL</h1>
+<h1 th:text="${total}"></h1>
+
+</body>
+</html>
+</body>
+</html>
