@@ -1,6 +1,6 @@
-<mxfile host="Electron" modified="2023-06-02T09:30:31.248Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/21.2.8 Chrome/112.0.5615.165 Electron/24.2.0 Safari/537.36" etag="H_uUy6u6Do7BuuBBcUzL" version="21.2.8" type="device">
+<mxfile host="Electron" modified="2023-06-03T08:06:49.391Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/21.2.8 Chrome/112.0.5615.165 Electron/24.2.0 Safari/537.36" etag="rodVApou73tdfJvXqVNt" version="21.2.8" type="device">
   <diagram id="6a731a19-8d31-9384-78a2-239565b7b9f0" name="Page-1">
-    <mxGraphModel dx="2402" dy="1540" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" background="none" math="0" shadow="0">
+    <mxGraphModel dx="5220" dy="3170" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" background="none" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -148,15 +148,15 @@
         <mxCell id="Ez0i-pa0Hl29S7qBLDN9-1790" value="Layout" style="rounded=1;whiteSpace=wrap;html=1;shadow=0;labelBackgroundColor=none;strokeColor=none;strokeWidth=3;fillColor=#f08e81;fontFamily=Helvetica;fontSize=14;fontColor=#FFFFFF;align=center;spacing=5;fontStyle=0;arcSize=7;perimeterSpacing=2;" parent="1" vertex="1">
           <mxGeometry x="1280" y="-300" width="150" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="lpJTOKS2XH9Vu74WQ6I0-1780" value="" style="edgeStyle=none;rounded=0;jumpStyle=none;html=1;shadow=0;labelBackgroundColor=none;startArrow=none;startFill=0;endArrow=classic;endFill=1;jettySize=auto;orthogonalLoop=1;strokeColor=#1699D3;strokeWidth=3;fontFamily=Helvetica;fontSize=14;fontColor=#FFFFFF;spacing=5;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" target="lpJTOKS2XH9Vu74WQ6I0-1782" source="1760">
+        <mxCell id="lpJTOKS2XH9Vu74WQ6I0-1780" value="" style="edgeStyle=none;rounded=0;jumpStyle=none;html=1;shadow=0;labelBackgroundColor=none;startArrow=none;startFill=0;endArrow=classic;endFill=1;jettySize=auto;orthogonalLoop=1;strokeColor=#1699D3;strokeWidth=3;fontFamily=Helvetica;fontSize=14;fontColor=#FFFFFF;spacing=5;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" parent="1" source="1760" target="lpJTOKS2XH9Vu74WQ6I0-1782" edge="1">
           <mxGeometry relative="1" as="geometry">
             <mxPoint x="373" y="1009" as="sourcePoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="lpJTOKS2XH9Vu74WQ6I0-1782" value="&lt;b&gt;các thành phần trong spring framework&lt;br&gt;- bean: là trung tâm của spring core, là các object java cơ bản được quản lý bởi IOC container&lt;br&gt;-Core: cung cấp các tính năng IOC và DI&amp;nbsp;&lt;br&gt;-AOP/ASPECT : lập trình hướng khía cạnh&amp;nbsp;&lt;br&gt;- data access: giao tiếp database&lt;br&gt;- web spring mvc : tạo ứng dụng web&lt;br&gt;&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;shadow=0;labelBackgroundColor=none;strokeColor=none;strokeWidth=3;fillColor=#64bbe2;fontFamily=Helvetica;fontSize=14;fontColor=#FFFFFF;align=center;spacing=5;arcSize=7;perimeterSpacing=2;" vertex="1" parent="1">
+        <mxCell id="lpJTOKS2XH9Vu74WQ6I0-1782" value="&lt;b&gt;các thành phần trong spring framework&lt;br&gt;- bean: là trung tâm của spring core, là các object java cơ bản được quản lý bởi IOC container&lt;br&gt;-Core: cung cấp các tính năng IOC và DI&amp;nbsp;&lt;br&gt;-AOP/ASPECT : lập trình hướng khía cạnh&amp;nbsp;&lt;br&gt;- data access: giao tiếp database&lt;br&gt;- web spring mvc : tạo ứng dụng web&lt;br&gt;&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;shadow=0;labelBackgroundColor=none;strokeColor=none;strokeWidth=3;fillColor=#64bbe2;fontFamily=Helvetica;fontSize=14;fontColor=#FFFFFF;align=center;spacing=5;arcSize=7;perimeterSpacing=2;" parent="1" vertex="1">
           <mxGeometry x="305" y="1090" width="340" height="166.5" as="geometry" />
         </mxCell>
-        <mxCell id="lpJTOKS2XH9Vu74WQ6I0-1783" value="" style="edgeStyle=none;rounded=0;jumpStyle=none;html=1;shadow=0;labelBackgroundColor=none;startArrow=none;startFill=0;endArrow=classic;endFill=1;jettySize=auto;orthogonalLoop=1;strokeColor=#1699D3;strokeWidth=3;fontFamily=Helvetica;fontSize=14;fontColor=#FFFFFF;spacing=5;exitX=0.43;exitY=0.948;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" target="lpJTOKS2XH9Vu74WQ6I0-1785" source="1760">
+        <mxCell id="lpJTOKS2XH9Vu74WQ6I0-1783" value="" style="edgeStyle=none;rounded=0;jumpStyle=none;html=1;shadow=0;labelBackgroundColor=none;startArrow=none;startFill=0;endArrow=classic;endFill=1;jettySize=auto;orthogonalLoop=1;strokeColor=#1699D3;strokeWidth=3;fontFamily=Helvetica;fontSize=14;fontColor=#FFFFFF;spacing=5;exitX=0.43;exitY=0.948;exitDx=0;exitDy=0;exitPerimeter=0;" parent="1" source="1760" target="lpJTOKS2XH9Vu74WQ6I0-1785" edge="1">
           <mxGeometry relative="1" as="geometry">
             <mxPoint x="388" y="829.5" as="sourcePoint" />
             <Array as="points">
@@ -164,15 +164,15 @@
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="lpJTOKS2XH9Vu74WQ6I0-1785" value="&lt;b&gt;tổng quan spring MVC&lt;br&gt;- là 1 nền tảng phát triển ứng dụng java EE&lt;br&gt;- cung cấp 1 front controller / dispatcher serverlet để xử lý và lắng nghe mỗi khi có request đối với ứng dụng&lt;br&gt;- các lợi ích sd front controller: bảo mật I18N(đa ngôn ngữ)&lt;br&gt;&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;shadow=0;labelBackgroundColor=none;strokeColor=none;strokeWidth=3;fillColor=#64bbe2;fontFamily=Helvetica;fontSize=14;fontColor=#FFFFFF;align=center;spacing=5;arcSize=7;perimeterSpacing=2;" vertex="1" parent="1">
+        <mxCell id="lpJTOKS2XH9Vu74WQ6I0-1785" value="&lt;b&gt;tổng quan spring MVC&lt;br&gt;- là 1 nền tảng phát triển ứng dụng java EE&lt;br&gt;- cung cấp 1 front controller / dispatcher serverlet để xử lý và lắng nghe mỗi khi có request đối với ứng dụng&lt;br&gt;- các lợi ích sd front controller: bảo mật I18N(đa ngôn ngữ)&lt;br&gt;&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;shadow=0;labelBackgroundColor=none;strokeColor=none;strokeWidth=3;fillColor=#64bbe2;fontFamily=Helvetica;fontSize=14;fontColor=#FFFFFF;align=center;spacing=5;arcSize=7;perimeterSpacing=2;" parent="1" vertex="1">
           <mxGeometry x="-90" y="1060" width="340" height="166.5" as="geometry" />
         </mxCell>
-        <mxCell id="lpJTOKS2XH9Vu74WQ6I0-1789" value="" style="edgeStyle=none;rounded=1;jumpStyle=none;html=1;shadow=0;labelBackgroundColor=none;startArrow=none;startFill=0;jettySize=auto;orthogonalLoop=1;strokeColor=#E85642;strokeWidth=3;fontFamily=Helvetica;fontSize=14;fontColor=#FFFFFF;spacing=5;fontStyle=1;fillColor=#b0e3e6;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" target="lpJTOKS2XH9Vu74WQ6I0-1790" source="1753">
+        <mxCell id="lpJTOKS2XH9Vu74WQ6I0-1789" value="" style="edgeStyle=none;rounded=1;jumpStyle=none;html=1;shadow=0;labelBackgroundColor=none;startArrow=none;startFill=0;jettySize=auto;orthogonalLoop=1;strokeColor=#E85642;strokeWidth=3;fontFamily=Helvetica;fontSize=14;fontColor=#FFFFFF;spacing=5;fontStyle=1;fillColor=#b0e3e6;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" parent="1" source="1753" target="lpJTOKS2XH9Vu74WQ6I0-1790" edge="1">
           <mxGeometry relative="1" as="geometry">
             <mxPoint x="-452" y="447" as="sourcePoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="lpJTOKS2XH9Vu74WQ6I0-1790" value="&lt;b&gt;so sánh @RequestParam và @PathVariable&lt;br&gt;- đều sd để gửi giá trị đến server&amp;nbsp;&lt;br&gt;- đều là 1 phần của uRL&amp;nbsp;&lt;br&gt;- @RequestParam: sd để truy xuất giá trị của 1 tham số đầu vào&amp;nbsp; trong query String của request hoặc trong body cuarequest thường dùng chó chức năng tìm kiếm&amp;nbsp;&lt;br&gt;- @PathVariable thường dùng cho chức năng tìm kiếm&amp;nbsp;&lt;br&gt;&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;shadow=0;labelBackgroundColor=none;strokeColor=none;strokeWidth=3;fillColor=#f08e81;fontFamily=Helvetica;fontSize=14;fontColor=#FFFFFF;align=center;spacing=5;fontStyle=0;arcSize=7;perimeterSpacing=2;" vertex="1" parent="1">
+        <mxCell id="lpJTOKS2XH9Vu74WQ6I0-1790" value="&lt;b&gt;so sánh @RequestParam và @PathVariable&lt;br&gt;- đều sd để gửi giá trị đến server&amp;nbsp;&lt;br&gt;- đều là 1 phần của uRL&amp;nbsp;&lt;br&gt;- @RequestParam: sd để truy xuất giá trị của 1 tham số đầu vào&amp;nbsp; trong query String của request hoặc trong body cuarequest thường dùng chó chức năng tìm kiếm&amp;nbsp;&lt;br&gt;- @PathVariable thường dùng cho chức năng tìm kiếm&amp;nbsp;&lt;br&gt;&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;shadow=0;labelBackgroundColor=none;strokeColor=none;strokeWidth=3;fillColor=#f08e81;fontFamily=Helvetica;fontSize=14;fontColor=#FFFFFF;align=center;spacing=5;fontStyle=0;arcSize=7;perimeterSpacing=2;" parent="1" vertex="1">
           <mxGeometry x="-450" y="790" width="180" height="350" as="geometry" />
         </mxCell>
       </root>
