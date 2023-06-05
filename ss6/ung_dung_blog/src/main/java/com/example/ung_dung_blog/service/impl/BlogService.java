@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Slice;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -51,4 +52,24 @@ public class BlogService implements IBlogService {
     public Page<Blog> findPage(Pageable pageable) {
         return blogRepository.findAll(pageable);
     }
+
+    @Override
+    public List<Blog> getListOfObjectFromDbBasedOnQuery(String query) {
+        return blogRepository.getListOfObjectFromDbBasedOnQuery(query);
+    }
+
+    @Override
+    public List<Blog> findByNameContainingIgnoreCase(String searchText) {
+        return null;
+    }
+
+    @Override
+    public Slice<Blog> findAllBlogBySlice(Integer page) {
+        return blogRepository.findAllBlog(PageRequest.of(page,2));
+    }
+
+//    @Override
+//    public List<Blog> findByNameContainingIgnoreCase(String searchText) {
+//        return blogRepository.findByNameContainingIgnoreCase(searchText);
+//    }
 }

@@ -30,10 +30,24 @@ public class BlogController {
 
 
 
+//    @GetMapping("/search")
+//    public String search(@RequestParam("searchText") String searchText, Model model) {
+//        // Gọi hàm tìm kiếm từ Repository
+//        List<Blog> searchResult = blogService.findByNameContainingIgnoreCase(searchText);
+//        // Truyền kết quả tìm kiếm vào model
+//        model.addAttribute("blogList", searchResult);
+//        // Trả về template hiển thị kết quả tìm kiếm
+//        return "blogList";
+//    }
 
 
-
-
+    @GetMapping("/")
+    public String paginate(Model model, @RequestParam(value = "p", defaultValue = "0")Optional<Integer> p){
+        Pageable pageable = PageRequest.of(p.orElse(0),2);
+        Page<Blog> page = blogService.findPage(pageable);
+        model.addAttribute("blogList", page);
+        return "blogList";
+    }
 
 
     @GetMapping("/create")
@@ -76,11 +90,5 @@ public class BlogController {
         return "redirect:/";
     }
 
-    @GetMapping("/")
-    public String paginate(Model model, @RequestParam(value = "p", defaultValue = "0")Optional<Integer> p){
-        Pageable pageable = PageRequest.of(p.orElse(0),2);
-        Page<Blog> page = blogService.findPage(pageable);
-        model.addAttribute("blogList", page);
-        return "blogList";
-    }
+
 }

@@ -8,7 +8,9 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
             crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
+
 <body>
 <h1>Blog Management</h1>
 <nav class="navbar bg-dark" data-bs-theme="dark">
@@ -23,11 +25,20 @@
         <!--      <input th:value="${search}" name="search" class="form-control me-2"  placeholder="Search" aria-label="Search">-->
         <!--      <button class="btn btn-outline-success" type="submit">Search</button>-->
         <!--    </form>-->
+<!--        <form>-->
+<!--            <label for="search_input">Search:</label>-->
+<!--            <input type="text" id="search_input">-->
+<!--        </form>-->
+
+            <input type="text" id="titleSearch" name="searchText" placeholder="Search...">
+            <button onclick="searchName()">Search</button>
+
     </div>
 </nav>
 <table class="table table-hover table-success table-striped">
+    <thead>
     <tr>
-        <th>No</th>
+        <!--        <th>No</th>-->
         <th>ID</th>
         <th>Title</th>
         <th>Author</th>
@@ -37,31 +48,37 @@
         <th colspan="3">Actions</th>
         <th></th>
     </tr>
-    <tr th:each="blog,loop : ${blogList.content}">
-        <td th:text="${loop.count}"></td>
-        <td th:text="${blog.id}"></td>
-        <td th:text="${blog.title}"></td>
-        <td th:text="${blog.author}"></td>
-        <td th:text="${blog.getCategory().getName()}"></td>
-        <td th:text="${blog.createTime}"></td>
-        <td th:text="${blog.updateTime}"></td>
-        <td><a th:href="@{/edit/{id}(id=${blog.id})}">
-            <button class="btn btn-warning">Edit</button>
-        </a></td>
-        <td>
-            <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal"
-                    th:text="Delete"
-                    th:attr="onclick=|inforDelete(${blog.id},'${blog.title}')|">
-            </button>
-        </td>
-        <td><a th:href="@{/detail/{id}(id = ${blog.id})}">
-            <button type="button" class="btn btn-primary"
+    </thead>
+    <tbody id="blog-table">
 
-            >Detail
-            </button>
-        </a></td>
-    </tr>
+    </tbody>
+
+<!--    <tr th:each="blog,loop : ${blogList.content}">-->
+<!--        <td th:text="${loop.count}"></td>-->
+<!--        <td th:text="${blog.id}"></td>-->
+<!--        <td th:text="${blog.title}"></td>-->
+<!--        <td th:text="${blog.author}"></td>-->
+<!--        <td th:text="${blog.getCategory().getName()}"></td>-->
+<!--        <td th:text="${blog.createTime}"></td>-->
+<!--&lt;!&ndash;        <td th:text="${blog.updateTime}"></td>&ndash;&gt;-->
+<!--        <td><a th:href="@{/edit/{id}(id=${blog.id})}">-->
+<!--            <button class="btn btn-warning">Edit</button>-->
+<!--        </a></td>-->
+<!--        <td>-->
+<!--            <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal"-->
+<!--                    th:text="Delete"-->
+<!--                    th:attr="onclick=|inforDelete(${blog.id},'${blog.title}')|">-->
+<!--            </button>-->
+<!--        </td>-->
+<!--        <td><a th:href="@{/detail/{id}(id = ${blog.id})}">-->
+<!--            <button type="button" class="btn btn-primary"-->
+
+<!--            >Detail-->
+<!--            </button>-->
+<!--        </a></td>-->
+<!--    </tr>-->
 </table>
+<button onclick="loadMore()" id="loadMoreBtn">Load More</button>
 
 <!--<div>-->
 <!--  <a th:href="@{/(page=${blogList.number - 1})}" th:if="${blogList.hasPrevious()}">Previous</a>-->
@@ -69,27 +86,27 @@
 
 <!--</div>-->
 
-<nav aria-label="Page navigation example">
-    <ul class="pagination">
-        <li class="page-item">
-            <a class="page-link" th:if="${blogList.hasPrevious()}" th:href="@{/(p=0)}" aria-label="First">
-                <span aria-hidden="true">&laquo;</span>
-                <span class="sr-only">First</span>
-            </a>
-        </li>
-        <li class="page-item"><a class="page-link" th:if="${blogList.hasPrevious()}"
-                                 th:href="@{/(p=${blogList.number - 1})}">Previous</a></li>
-        <li class="page-item"><a class="page-link" th:if="${blogList.hasNext()}"
-                                 th:href="@{/(p=${blogList.number + 1})}">Next</a></li>
-        <li class="page-item">
-            <a class="page-link" th:if="${blogList.hasNext()}" th:href="@{/(p=${blogList.getTotalPages() - 1})}"
-               aria-label="Last">
-                <span aria-hidden="true">&raquo;</span>
-                <span class="sr-only">Last</span>
-            </a>
-        </li>
-    </ul>
-</nav>
+<!--<nav aria-label="Page navigation example">-->
+<!--    <ul class="pagination">-->
+<!--        <li class="page-item">-->
+<!--            <a class="page-link" th:if="${blogList.hasPrevious()}" th:href="@{/(p=0)}" aria-label="First">-->
+<!--                <span aria-hidden="true">&laquo;</span>-->
+<!--                <span class="sr-only">First</span>-->
+<!--            </a>-->
+<!--        </li>-->
+<!--        <li class="page-item"><a class="page-link" th:if="${blogList.hasPrevious()}"-->
+<!--                                 th:href="@{/(p=${blogList.number - 1})}">Previous</a></li>-->
+<!--        <li class="page-item"><a class="page-link" th:if="${blogList.hasNext()}"-->
+<!--                                 th:href="@{/(p=${blogList.number + 1})}">Next</a></li>-->
+<!--        <li class="page-item">-->
+<!--            <a class="page-link" th:if="${blogList.hasNext()}" th:href="@{/(p=${blogList.getTotalPages() - 1})}"-->
+<!--               aria-label="Last">-->
+<!--                <span aria-hidden="true">&raquo;</span>-->
+<!--                <span class="sr-only">Last</span>-->
+<!--            </a>-->
+<!--        </li>-->
+<!--    </ul>-->
+<!--</nav>-->
 
 
 <!-- Modal -->
@@ -154,7 +171,203 @@
         document.getElementById("deleteId").value = id;
         document.getElementById("deleteName").innerText = name;
     }
+
 </script>
+<!--<script>-->
+<!--    $(document).ready(function() {-->
+<!--        $('form').on('submit', function(event) {-->
+<!--            event.preventDefault();-->
+<!--            search();-->
+<!--        });-->
+<!--    });-->
+
+<!--    function search() {-->
+<!--        var searchText = $('#searchText').val();-->
+<!--        $.ajax({-->
+<!--            type: "GET",-->
+<!--            url: "http://localhost:8080/search",-->
+<!--            data: { searchText: searchText },-->
+<!--            success: function(result) {-->
+<!--                console.log(this.data)-->
+<!--                // Hiển thị kết quả tìm kiếm trên trang web-->
+<!--            },-->
+<!--            error: function(error) {-->
+<!--                console.log(error);-->
+<!--            }-->
+<!--        });-->
+<!--    }-->
+<!--</script>-->
+<script>
+    function searchName() {
+        let title = document.getElementById('titleSearch').value;
+        $.ajax({
+            headers: {
+                'accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            url: 'http://localhost:8080/api/admin/blog/search?title=' + encodeURIComponent(title),
+            type: 'GET',
+            success: function (data) {
+                let table =document.getElementById("blog-table")
+                while (table.rows.length > 0) {
+                    table.deleteRow(0);
+                }
+                for (let i = 0; i < data.length; i++) {
+                    let row = table.insertRow(i);
+                    let id = row.insertCell(0);
+                    let title = row.insertCell(1);
+                    let author = row.insertCell(2);
+                    let content = row.insertCell(3);
+                    let createTime = row.insertCell(4);
+                    let updateTime = row.insertCell(5);
+                    id.innerHTML = data[i].id;
+                    title.innerHTML = data[i].title;
+                    author.innerHTML = data[i].author;
+                    content.innerHTML = data[i].content;
+                    createTime.innerHTML = data[i].createTime;
+                    updateTime.innerHTML = data[i].updateTime;
+
+
+                }
+                console.log(data)
+            },
+            error: function (data){
+                console.log(data)
+            }
+        })
+    }
+</script>
+<script>
+    $(document).ready(function (){
+        $.ajax({
+            headers: {
+                'accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            url: 'http://localhost:8080/api/admin/blog',
+            type: "GET",
+            success: function (data) {
+                // let table = document.getElementById("blog-table")
+                let blogs = '';
+
+                for (let i = 0; i < data.content.length; i++) {
+                    blogs += `
+                        <tr>
+                            <td>${data.content[i].id}</td>
+                            <td>${data.content[i].title}</td>
+                            <td>${data.content[i].author}</td>
+                            <td>${data.content[i].content}</td>
+                            <td>${data.content[i].createTime}</td>
+                            <td>${data.content[i].updateTime}</td>
+                        </tr>
+                    `;
+
+                    // let row = table.insertRow(i+1);
+                    // let id = row.insertCell(0);
+                    // let title = row.insertCell(1);
+                    // let author = row.insertCell(2);
+                    // let content = row.insertCell(3);
+                    // let createTime = row.insertCell(4);
+                    // let updateTime = row.insertCell(5);
+                    // id.innerHTML = data[i].id;
+                    // title.innerHTML = data[i].title;
+                    // author.innerHTML = data[i].author;
+                    // content.innerHTML = data[i].content;
+                    // createTime.innerHTML = data[i].createTime;
+                    // updateTime.innerHTML = data[i].updateTime;
+                }
+
+                $('#blog-table').html(blogs);
+            }, error: function (data){
+            }
+        })
+    })
+</script>
+<script>
+    let page=1;
+    function loadMore() {
+        $.ajax({
+            headers: {
+                'accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            url: 'http://localhost:8080/api/admin/blog/loadMore?page='+decodeURIComponent(page++),
+            type: 'GET',
+            success: function (data) {
+                let blogs = '';
+
+                for (let i = 0; i < data.content.length; i++) {
+                    blogs += `
+                        <tr>
+                            <td>${data.content[i].id}</td>
+                            <td>${data.content[i].title}</td>
+                            <td>${data.content[i].author}</td>
+                            <td>${data.content[i].content}</td>
+                            <td>${data.content[i].createTime}</td>
+                            <td>${data.content[i].updateTime}</td>
+                        </tr>
+                    `;
+
+                    // let row = table.insertRow(i+1);
+                    // let id = row.insertCell(0);
+                    // let title = row.insertCell(1);
+                    // let author = row.insertCell(2);
+                    // let content = row.insertCell(3);
+                    // let createTime = row.insertCell(4);
+                    // let updateTime = row.insertCell(5);
+                    // id.innerHTML = data[i].id;
+                    // title.innerHTML = data[i].title;
+                    // author.innerHTML = data[i].author;
+                    // content.innerHTML = data[i].content;
+                    // createTime.innerHTML = data[i].createTime;
+                    // updateTime.innerHTML = data[i].updateTime;
+                }
+
+                $('#blog-table').append(blogs);
+            },
+            error: function (data){
+                console.log(data)
+            }
+        })
+    }
+</script>
+<!--<script>-->
+<!--    $(document).ready(function (){-->
+<!--        $.ajax({-->
+<!--            headers: {-->
+<!--                'accept': 'application/json',-->
+<!--                'Content-Type': 'application/json'-->
+<!--            },-->
+<!--            url: 'http://localhost:8080/api/admin/blog',-->
+<!--            type: "GET",-->
+<!--            success: function (data) {-->
+<!--                let table = document.getElementById("blog-table")-->
+<!--                for (let i = 0; i < data.length; i++) {-->
+<!--                    let row = table.insertRow(i+1);-->
+<!--                    let id = row.insertCell(0);-->
+<!--                    let title = row.insertCell(1);-->
+<!--                    let author = row.insertCell(2);-->
+<!--                    let content = row.insertCell(3);-->
+<!--                    let createTime = row.insertCell(4);-->
+<!--                    let updateTime = row.insertCell(5);-->
+<!--                    id.innerHTML = data[i].id;-->
+<!--                    title.innerHTML = data[i].title;-->
+<!--                    author.innerHTML = data[i].author;-->
+<!--                    content.innerHTML = data[i].content;-->
+<!--                    createTime.innerHTML = data[i].createTime;-->
+<!--                    updateTime.innerHTML = data[i].updateTime;-->
+<!--            }-->
+<!--        }, error: function (data){-->
+<!--            }-->
+<!--        })-->
+<!--    })-->
+<!--</script>-->
+<!--<script>-->
+<!--    $.get("/search", {term: $('#search_input').val()}, function(data) {-->
+<!--        console.log(data);-->
+<!--// do your data manipulation and transformation here-->
+<!--    });-->
+<!--</script>-->
 <!--<script>-->
 <!--  function detail(id,title,author,content,createTime,updateTime){-->
 <!--    document.getElementById("id").innerText=id;-->
