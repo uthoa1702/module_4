@@ -16,6 +16,13 @@ import java.util.List;
 public class BlogRestController {
     @Autowired
     private IBlogService iBlogService;
+    @GetMapping("/blog/search/category/{category}")
+    public ResponseEntity<List<Blog>> getListByCategoryName(@PathVariable("category") String categoryName){
+        List<Blog> blogList = iBlogService.findByCategory("%"+categoryName+"%");
+
+        return new ResponseEntity<>(blogList, HttpStatus.OK);
+
+    }
 
     @GetMapping("/blog")
     public ResponseEntity<List<Blog>> getList(){

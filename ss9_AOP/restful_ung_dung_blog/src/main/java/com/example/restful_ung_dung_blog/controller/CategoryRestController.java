@@ -26,13 +26,7 @@ public class CategoryRestController {
 
 
 
-    @GetMapping("/search/category/{category}")
-    public ResponseEntity<List<Blog>> getListByCategoryName(@PathVariable("category") String categoryName){
-        List<Blog> blogList = iBlogService.findByCategory("%"+categoryName+"%");
 
-        return new ResponseEntity<>(blogList, HttpStatus.OK);
-
-    }
     @GetMapping("/category")
     public ResponseEntity<List<Category>> getCategoryList(){
         return new ResponseEntity<>(iCategoryService.findAll(), HttpStatus.OK);
