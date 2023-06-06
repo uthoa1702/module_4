@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,16 +31,18 @@ public class RentalBookController {
         model.addAttribute("books", books);
         return "book-list";
     }
-
+@Transactional
     @GetMapping("/rent/{id}")
     public String rent(Model model, @PathVariable("id") Integer id, RedirectAttributes redirectAttributes) {
 
         Book book1 = iBookService.findById(id);
-        book1.setQuantity(book1.getQuantity() - 1);
+
+        iRentalBookService.setQuantity(book1);
         iBookService.save(book1);
-        int rentCode;
-        List<BookRenting> bookRentings = iRentalBookService.getList();
-         rentCode = iRentalBookService.checkCode(bookRentings);
+
+        int rentCode = iRentalBookService.getCode(iRentalBookService.getList());
+//        List<BookRenting> bookRentings = iRentalBookService.getList();
+
 
 
         BookRenting bookRenting = new BookRenting(rentCode, book1);
@@ -54,12 +57,13 @@ public class RentalBookController {
         model.addAttribute("bookRenting", bookRentings);
         return "renting-list";
     }
-
+@Transactional
     @GetMapping("/return/{id}")
     public String returnBook(@PathVariable("id") Integer id) {
         BookRenting bookRenting = iRentalBookService.findById(id);
         Book book = bookRenting.getBook();
-        book.setQuantity(book.getQuantity() + 1);
+        iRentalBookService.setQuantityforReturning(book);
+//        book.setQuantity(book.getQuantity() + 1);
         iBookService.save(book);
 
         iRentalBookService.returnBook(id);

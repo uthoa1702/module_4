@@ -16,5 +16,10 @@ public interface IRentalBookService {
 
     void returnBook(Integer id);
 
-    int checkCode(List<BookRenting> bookRentings);
+    int getCode(List<BookRenting> bookRentings);
+
+    void setQuantity(Book book1);
+
+
+    void setQuantityforReturning(Book book);
 }

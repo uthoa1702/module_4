@@ -36,7 +36,7 @@ public class RentalBookService implements IRentalBookService {
     }
 
     @Override
-    public int checkCode(List<BookRenting> bookRentings) {
+    public int getCode(List<BookRenting> bookRentings) {
         boolean check;
         int rentCode;
         do {
@@ -51,6 +51,18 @@ public class RentalBookService implements IRentalBookService {
         } while (!check);
         return rentCode;
     }
+
+    @Override
+    public void setQuantity(Book book1) {
+        book1.setQuantity(book1.getQuantity() -1);
+    }
+
+    @Override
+    public void setQuantityforReturning(Book book) {
+        book.setQuantity(book.getQuantity()+1);
+    }
+
+
     public int getRandomNumber(int min, int max) {
         return (int) ((Math.random() * (max - min)) + min);
     }
