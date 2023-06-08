@@ -12,6 +12,7 @@ import java.util.Date;
 @EntityListeners(AuditingEntityListener.class)
 public class Blog {
     @Id
+
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 

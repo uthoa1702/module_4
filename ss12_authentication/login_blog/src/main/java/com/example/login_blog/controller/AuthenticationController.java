@@ -14,6 +14,11 @@ public class AuthenticationController {
         return "login";
     }
 
+    @RequestMapping(value = "/403", method = RequestMethod.GET)
+    public String error(Model model) {
+        return "403-page";
+    }
+
 //    @RequestMapping(value = "/logout", method = RequestMethod.GET)
 //    public String logoutSuccessfulPage(Model model) {
 //        model.addAttribute("title", "Logout");
