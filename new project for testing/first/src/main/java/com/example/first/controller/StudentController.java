@@ -22,7 +22,7 @@ public class StudentController {
     @GetMapping("/")
     public String showList(Model model){
         List<Student> list = iStudentService.findAll();
-        model.addAttribute("list",list);
+        model.addAttribute("studentList",list);
         return "list";
     }
 
